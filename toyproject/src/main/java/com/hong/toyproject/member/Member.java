@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Primary;
 
 import javax.persistence.*;
 import java.math.BigInteger;
+import java.util.Objects;
 
 @Getter
 @ToString
@@ -29,11 +30,20 @@ public class Member {
         this.name = name;
     }
 
-    //    @Override
-//    public String toString() {
-//        return "Member{" +
-//                "memberId=" + memberId +
-//                ", name='" + name + '\'' +
-//                '}';
-//    }
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o)
+            return true;
+        if (!(o instanceof Member))
+            return false;
+        Member member = (Member) o;
+        return Objects.equals(this.memberId, member.memberId) &&
+                Objects.equals(this.name, member.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.memberId, this.name);
+    }
 }

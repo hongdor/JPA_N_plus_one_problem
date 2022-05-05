@@ -33,7 +33,6 @@ public class MemberController {
         Member member = this.memberRepository.findById(id).get();
         MemberDto res = new MemberDto(member);
         System.out.println(res);
-        System.out.println(new TeamDto(member.getTeam()));
         return res;
     }
 
@@ -43,7 +42,6 @@ public class MemberController {
         Member member = this.memberRepository.findAllMemberDsl();
         MemberDto res = new MemberDto(member);
         System.out.println(res);
-        System.out.println(new TeamDto(member.getTeam()));
         return res;
     }
 
